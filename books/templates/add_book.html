@@ -1,0 +1,22 @@
+<!--books/templates/users/dashboard.html-->
+
+{% extends 'base.html' %}
+{% block content %}
+{{ err }}
+
+<div class="container mt-3">
+{% if user.is_authenticated %}
+  <h1>Add a new book </h1>
+  <form action="" method="post">
+    {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" class="btn btn-primary">
+  </form>
+
+  
+{% else %}
+  <h1>Please Login to View Books </h1>
+
+{% endif %}
+</div>
+{% endblock %}

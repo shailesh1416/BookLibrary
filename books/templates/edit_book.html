@@ -1,0 +1,47 @@
+<!--books/templates/users/dashboard.html-->
+
+{% extends 'base.html' %}
+{% block content %}
+{{ err }}
+
+<div class="container mt-3">
+{% if user.is_authenticated %}
+  <h1>Edit book </h1>
+  <form action="{% url 'update_book' %}" method="post">
+    {% csrf_token %}
+      <input type="text" name="id" value="{{book.id}}">
+      <p class="form-group">
+        <label for="name">Title</label>
+        <input type="text" name="{{book.title}}" id="id_{{book.title}}" value="{{book.title}}">
+      </p>
+      <p class="form-group">
+        <label for="name">Author</label>
+        <input name="{{book.author}}" id="id_{{book.author}}" type="text" value="{{book.author}}">
+      </p>
+      <p class="form-group">
+        <label for="name">Description</label>
+        <textarea name="{{book.description}}" id="id_{{book.description}}" >{{book.description}}</textarea>
+      </p>
+      <p class="form-group">
+        <label for="name">Publisher</label>
+        <input name="{{book.publisher}}" id="id_{{book.publisher}}" type="text" value="{{book.publisher}}">
+      </p>
+      <p class="form-group">
+        <label for="name">Published Date</label>
+        <input name="{{book.pubished_date}}" id="id_{{book.pubished_date}}" type="date" value="{{book.pubished_date}}">
+      </p>
+      
+      <p class="form-group">
+        <label for="name">Pages</label>
+        <input type="text" name="{{book.pages}}" id="id_{{book.pages}}" value="{{book.pages}}">
+      </p>
+      <input type="submit" class="btn btn-primary">
+  </form>
+
+  
+{% else %}
+  <h1>Please Login to View Books </h1>
+
+{% endif %}
+</div>
+{% endblock %}

@@ -12,6 +12,7 @@ class Book(models.Model):
     pages = models.BigIntegerField()
     pubished_date = models.DateField()
 
+
     def __str__(self):
         return f"{self.title }   ({self.author})"
 

@@ -1,0 +1,16 @@
+<!--books/templates/users/dashboard.html-->
+
+{% extends 'base.html' %}
+{% block content %}
+{{ err }}
+
+<div class="container mt-3">
+{% if user.is_authenticated %}
+  <h1>Books Deleted</h1>
+    <a href="{% url 'dashboard' %}">Back to dashboard</a>
+{% else %}
+  <h1>Please Login to View Books </h1>
+  
+  {% endif %}
+</div>
+{% endblock %}
